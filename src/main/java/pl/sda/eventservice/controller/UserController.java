@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.sda.eventservice.controller.dto.UserDto;
+import pl.sda.eventservice.model.User;
 import pl.sda.eventservice.service.UserService;
 
 import javax.validation.Valid;
@@ -20,16 +21,18 @@ public class UserController {
         this.userService = userService;
     }
 
-//    // wejście na stronę rejestracji
-//    @GetMapping("/register")
-//    public String register(Model model){
-//        model.addAttribute("user", new UserDto());
-//        return "registerForm";
-//    }
-
     // obsługa wysłanego formularza
     @PostMapping("/register")
     public void register(@ModelAttribute("user") @Valid UserDto userDto){
         userService.saveUser(userDto);
+    }
+
+    @GetMapping("/login")
+    public String login(String email, String password){
+        User loggedUser = userService.loginUser(email, password);
+        if(loggedUser!=null){
+            return "You are logged in.";
+        }
+        return "User does not exis.";
     }
 }
