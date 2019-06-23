@@ -20,21 +20,16 @@ public class UserController {
         this.userService = userService;
     }
 
-    // wejście na stronę rejestracji
-    @GetMapping("/register")
-    public String register(Model model){
-        model.addAttribute("user", new UserDto());
-        return "registerForm";
-    }
+//    // wejście na stronę rejestracji
+//    @GetMapping("/register")
+//    public String register(Model model){
+//        model.addAttribute("user", new UserDto());
+//        return "registerForm";
+//    }
 
     // obsługa wysłanego formularza
     @PostMapping("/register")
-    public String register(@ModelAttribute("user") @Valid UserDto userDto,
-                           BindingResult bindingResult){
-        if(bindingResult.hasErrors()){
-            return "registerForm";
-        }
+    public void register(@ModelAttribute("user") @Valid UserDto userDto){
         userService.saveUser(userDto);
-        return "redirect:/";
     }
 }
