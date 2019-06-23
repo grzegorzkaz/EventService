@@ -1,6 +1,4 @@
-# _Event Service_ helps you create, join and search for events in your city!
-
-<p align="center"># _Event Service_ helps you create, join and search for events in your city!</p>
+<p align="center">Event Service helps you create, join and search for events in your city!</p>
 
 <p align="center"><img src="https://i.imgur.com/NL6irED.png" width=700 alt="Screenshot of Example Documentation created with Slate"></p>
 
@@ -35,6 +33,14 @@ Data is stored in MariaDB Database established on Linux server. Database is used
 
 HUMAN INTERFACE DESIGN
 ------------
+Our design is focused on delivering an experience that is simple and convenient for the user. 
+Clear structure of the website makes it easy to focus on the most important aspects of the website - which is event aggregation.  
+Our event management is simplified and easy to use. 
+The use of panels at the top of the website makes it fairly easy to navigate it between different events, adding events, searching events 
+as well as logging in and logging out and account management.  
+Through a use of bootstrap libraries, our app is also responsive and focused on mobile usage.  
+Adding events is intuitive and requires the most basic information about an event to be able to share it with the community. 
+We allow users to customize the information about their event accordingly to their needs.
 
 QUESTIONS AND REMARKS
 ------------
