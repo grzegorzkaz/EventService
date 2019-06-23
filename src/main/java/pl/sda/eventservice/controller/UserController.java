@@ -21,7 +21,7 @@ public class UserController {
     }
 
     // wejście na stronę rejestracji
-    @GetMapping("/register1")
+    @GetMapping("/register")
     public String register(Model model){
         model.addAttribute("user", new UserDto());
         return "registerForm";
