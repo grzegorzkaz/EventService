@@ -4,11 +4,13 @@ package pl.sda.eventservice.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.jpa.repository.Temporal;
+import org.springframework.format.annotation.DateTimeFormat;
 import pl.sda.eventservice.model.enums.EventCategoryEnum;
 import pl.sda.eventservice.model.enums.EventLocationEnum;
 
 import javax.persistence.*;
-import java.time.*;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -25,8 +27,18 @@ public class Event {
     private EventLocationEnum location;
     private EventCategoryEnum category;
     private String description;
-    private Date eventDateStart;
-    private Date eventDateEnd;
+    private String eventDateStart;
+    private String eventDateEnd;
+
+    public Event(String eventName, EventLocationEnum location, EventCategoryEnum category,
+                 String description,String eventDateStart,String eventDateEnd) {
+        this.eventName = eventName;
+        this.location = location;
+        this.category = category;
+        this.description = description;
+        this.eventDateStart = eventDateStart;
+        this.eventDateEnd = eventDateEnd;
+    }
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")

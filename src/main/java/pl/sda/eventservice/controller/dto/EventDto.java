@@ -1,10 +1,13 @@
 package pl.sda.eventservice.controller.dto;
 
 import lombok.Data;
+
 import pl.sda.eventservice.model.enums.EventCategoryEnum;
 import pl.sda.eventservice.model.enums.EventLocationEnum;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+
 
 @Data
 public class EventDto {
@@ -13,6 +16,6 @@ public class EventDto {
     private EventLocationEnum location;
     private EventCategoryEnum category;
     private String description;
-    private Date eventDateStart;
-    private Date eventDateEnd;
+    private String eventDateStart;
+    private String eventDateEnd;
 }
