@@ -35,4 +35,8 @@ public class Event {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "event")
     private List<Comment> comments;
 
+    public void addComment(Comment comment){
+        this.comments.add(comment);
+    }
+
 }

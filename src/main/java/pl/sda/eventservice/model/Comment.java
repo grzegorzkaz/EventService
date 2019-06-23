@@ -40,6 +40,17 @@ public class Comment {
         this.user = user;
     }
 
+    public Comment(String content, String author, Event event) {
+        this.content = content;
+        this.author = author;
+        this.event = event;
+    }
+
+    public Comment(String content, String author) {
+        this.content = content;
+        this.author = author;
+    }
+
     @Override
     public String toString() {
         return "Comment{" +
