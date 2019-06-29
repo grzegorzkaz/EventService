@@ -48,20 +48,17 @@
                     <a class="nav-link" th:if="${auth != null}" th:href="@{/logout}">Logout</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/}">Search</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" th:href="@{/}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/addEvent}">Add Event</a>
+                    <a class="nav-link" th:href="@{/addpost}">Sample Post</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/register}">Registration</a>
                 </li>
-<!--                <li class="nav-item">-->
-<!--                    <a class="nav-link" th:href="@{/contact}">Contact</a>-->
-<!--                </li>-->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/contact}">Contact</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -90,17 +87,17 @@
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls">
                             <label>Name</label>
-                            <input th:field="*{nickname}" type="text" class="form-control" placeholder="Nickname">
-                            <span th:if="${#fields.hasErrors('nickname')}" th:errors="*{nickname}" class="text-danger">error-message</span>
+                            <input th:field="*{name}" type="text" class="form-control" placeholder="Name">
+                            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger">error-message</span>
                         </div>
                     </div>
-<!--                    <div class="control-group">-->
-<!--                        <div class="form-group floating-label-form-group controls">-->
-<!--                            <label>Last name</label>-->
-<!--                            <input th:field="*{lastName}" type="text" class="form-control" placeholder="Last name">-->
-<!--                            <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="text-danger">error-message</span>-->
-<!--                        </div>-->
-<!--                    </div>-->
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls">
+                            <label>Last name</label>
+                            <input th:field="*{lastName}" type="text" class="form-control" placeholder="Last name">
+                            <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="text-danger">error-message</span>
+                        </div>
+                    </div>
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls">
                             <label>Email</label>
