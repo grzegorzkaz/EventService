@@ -9,10 +9,12 @@ import pl.sda.eventservice.model.User;
 import pl.sda.eventservice.controller.dto.CommentDto;
 import pl.sda.eventservice.model.Comment;
 import pl.sda.eventservice.model.Event;
+import pl.sda.eventservice.model.enums.EventCategoryEnum;
 import pl.sda.eventservice.repository.CommentRepository;
 import pl.sda.eventservice.repository.EventRepository;
 
 import java.sql.Date;
+import java.util.List;
 
 @Service
 public class EventService {
@@ -39,6 +41,14 @@ public class EventService {
                 // zapis do bazy danych
                 System.out.println(event);
         eventRepository.save(event);
+    }
+
+    public List<Event> getAllEvents() {
+        return eventRepository.findAll();
+    }
+
+    public List<Event> getAllPostsByCategory(EventCategoryEnum category) {
+        return eventRepository.findAllByCategory(category);
     }
 
     public void addCommentToEvent(CommentDto commentDto){
