@@ -9,7 +9,7 @@ import pl.sda.eventservice.service.UserService;
 
 import javax.validation.Valid;
 
-@RestController
+@Controller
 public class UserController {
     UserService userService;
 
@@ -31,7 +31,7 @@ public class UserController {
         if (loggedUser != null) {
             return "You are logged in.";
         }
-        return "User does not exis.";
+        return "User does not exist.";
     }
 
     @PutMapping("/addAdmin/{id}")
