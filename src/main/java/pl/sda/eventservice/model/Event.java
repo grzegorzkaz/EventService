@@ -11,6 +11,7 @@ import pl.sda.eventservice.model.enums.EventLocationEnum;
 
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
@@ -40,11 +41,6 @@ public class Event {
         this.eventDateEnd = eventDateEnd;
     }
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "event")
     private List<Comment> comments;
 
     public void addComment(Comment comment){
