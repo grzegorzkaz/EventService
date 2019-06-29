@@ -4,11 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -23,22 +22,29 @@ public class User {
     private String password;
     private LocalDateTime registration_date = LocalDateTime.now();
 
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_role",                                 // nazwa tabelki
+            joinColumns = @JoinColumn(name = "user_id"),        // klucz uzytkownika
+            inverseJoinColumns = @JoinColumn(name = "role_id")  // klucz roli
+    )private Set<Role> roles = new HashSet<>();
+
     public User(String nickname, String email, String password) {
         this.nickname = nickname;
         this.email = email;
         this.password = password;
     }
 
-    public void addEvent(){
+    public void addEvent() {
 
     }
 
-    public void addComment(){
+    public void addComment() {
 
     }
 
-    public void addRole(){
-
+    public void addRole(Role role){
+        this.roles.add(role);
     }
 }
 
