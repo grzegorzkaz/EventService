@@ -1,6 +1,7 @@
 package pl.sda.eventservice.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.sda.eventservice.controller.dto.UserDto;
 import pl.sda.eventservice.model.User;
@@ -20,10 +21,10 @@ public class UserService {
     }
 
     public void saveUser(UserDto userDto) {
-
+        String encodedPassword = new BCryptPasswordEncoder().encode(userDto.getPassword());
         User user = new User(userDto.getNickname(),
                 userDto.getEmail(),
-                userDto.getPassword());
+                encodedPassword);
         user.addRole(roleRepository.getOne(1L));
 
         // zapis do bazy danych

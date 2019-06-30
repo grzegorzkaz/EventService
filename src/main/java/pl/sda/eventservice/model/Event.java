@@ -5,14 +5,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.jpa.repository.Temporal;
-import org.springframework.format.annotation.DateTimeFormat;
 import pl.sda.eventservice.model.enums.EventCategoryEnum;
 import pl.sda.eventservice.model.enums.EventLocationEnum;
 
 import javax.persistence.*;
-import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -32,12 +28,14 @@ public class Event {
     private EventLocationEnum location;
     private EventCategoryEnum category;
     private String description;
-    private String eventDateStart;
-    private String eventDateEnd;
+    @Temporal(TemporalType.DATE)
+    private Date eventDateStart;
+    @Temporal(TemporalType.DATE)
+    private Date eventDateEnd;
 
     public Event(Long eventOrganiserId, String eventName, EventLocationEnum location,
-                 EventCategoryEnum category, String description, String eventDateStart,
-                 String eventDateEnd) {
+                 EventCategoryEnum category, String description, Date eventDateStart,
+                 Date eventDateEnd) {
         this.eventOrganiserId = eventOrganiserId;
         this.eventName = eventName;
         this.location = location;

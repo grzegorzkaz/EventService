@@ -1,12 +1,11 @@
 package pl.sda.eventservice.controller.dto;
 
 import lombok.Data;
-
 import pl.sda.eventservice.model.enums.EventCategoryEnum;
 import pl.sda.eventservice.model.enums.EventLocationEnum;
 
-import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.util.Date;
 
 
@@ -17,6 +16,8 @@ public class EventDto {
     private EventLocationEnum location;
     private EventCategoryEnum category;
     private String description;
-    private String eventDateStart;
-    private String eventDateEnd;
+    @Temporal(TemporalType.DATE)
+    private Date eventDateStart;
+    @Temporal(TemporalType.DATE)
+    private Date eventDateEnd;
 }
