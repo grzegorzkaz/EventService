@@ -1,6 +1,7 @@
 package pl.sda.eventservice.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,7 +26,8 @@ public class Event {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long eventId;
+    private Long event_id;
+    private Long eventOrganiserId;
     private String eventName;
     private EventLocationEnum location;
     private EventCategoryEnum category;
@@ -33,8 +35,10 @@ public class Event {
     private String eventDateStart;
     private String eventDateEnd;
 
-    public Event(String eventName, EventLocationEnum location, EventCategoryEnum category,
-                 String description, String eventDateStart, String eventDateEnd) {
+    public Event(Long eventOrganiserId, String eventName, EventLocationEnum location,
+                 EventCategoryEnum category, String description, String eventDateStart,
+                 String eventDateEnd) {
+        this.eventOrganiserId = eventOrganiserId;
         this.eventName = eventName;
         this.location = location;
         this.category = category;
@@ -51,12 +55,10 @@ public class Event {
     )
     private Set<User> users = new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "event")
+    @JsonIgnore
     private List<Comment> comments;
 
-//    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE}, fetch = FetchType.LAZY)
-//    @JoinColumn(name="user_id")
-//    private User user;
 
     public void addMember(User user) {
         this.users.add(user);

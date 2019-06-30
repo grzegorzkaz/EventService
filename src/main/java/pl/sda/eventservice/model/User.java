@@ -1,5 +1,6 @@
 package pl.sda.eventservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,7 +19,7 @@ import java.util.Set;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id_user;
+    private Long user_id;
     private String nickname;
     private String email;
     private String password;
@@ -31,11 +32,9 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id")  // klucz roli
     )private Set<Role> roles = new HashSet<>();
 
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private List<Event> events = new ArrayList<>();
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Comment> comments = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
+    @JsonIgnore
+    private List<Comment> comments;
 
     public User(String nickname, String email, String password) {
         this.nickname = nickname;
