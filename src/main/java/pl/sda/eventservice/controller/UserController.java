@@ -1,6 +1,7 @@
 package pl.sda.eventservice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import pl.sda.eventservice.controller.dto.UserDto;
 import pl.sda.eventservice.model.User;
