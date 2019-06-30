@@ -1,10 +1,10 @@
 package pl.sda.eventservice.model.enums;
 
 public enum EventCategoryEnum {
-    CONFERENCE,
-    TRADE_SHOW,
-    CONCERT,
-    MEETING,
-    SPORT,
-    PARTY
+    Conference,
+    Trade_Show,
+    Concert,
+    Meeting,
+    Sport_Event,
+    Party
 }

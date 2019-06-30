@@ -48,9 +48,6 @@
                     <a class="nav-link" th:if="${auth != null}" th:href="@{/logout}">Logout</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/}">Search for Events</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" th:href="@{/}">Home</a>
                 </li>
                 <li class="nav-item">
@@ -90,21 +87,24 @@
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls">
                             <label>Title</label>
-<!--                            <input th:field="*{title}" type="text" class="form-control" placeholder="Title">-->
-<!--                            <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="text-danger">error-message</span>-->
+                            <input th:field="*{eventName}" type="text" class="form-control" placeholder="Title">
+                            <span th:if="${#fields.hasErrors('eventName')}" th:errors="*{eventName}" class="text-danger">error-message</span>
                         </div>
                     </div>
-                    <div class="control-group">      <!--class="control-group"-->
-                        <div class="form-group floating-label-form-group controls">
-                            <!--<label>Category</label>-->
-<!--                            <select th:field="*{category}">-->
-<!--                                <option th:each="c : ${categories}"-->
-<!--                                        th:value="${categories.get(c.ordinal())}"-->
-<!--                                        th:text="${c.name()}">`-->
-<!--                                </option>-->
-                            </select>
-                        </div>
-                    </div>
+                    <label>Category</label>
+                    <select th:field="*{category}">
+                        <option th:each="c : ${categories}"
+                                th:value="${categories.get(c.ordinal())}"
+                                th:text="${c.name()}">`
+                        </option>
+                    </select>
+                    <label>Localization</label>
+                    <select th:field="*{location}">
+                        <option th:each="l : ${locations}"
+                                th:value="${locations.get(l.ordinal())}"
+                                th:text="${l.name()}">`
+                        </option>
+                    </select>
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls">
                             <label>Content</label>
