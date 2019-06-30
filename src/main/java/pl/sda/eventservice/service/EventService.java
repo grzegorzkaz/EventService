@@ -28,9 +28,10 @@ public class EventService {
         this.userRepository = userRepository;
     }
 
-    public void saveEvent(EventDto eventDto) {
+    public void saveEvent(EventDto eventDto, Long eventOganiserId) {
 
-        Event event = new Event(eventDto.getEventName(),
+        Event event = new Event(eventOganiserId,
+                eventDto.getEventName(),
                 eventDto.getLocation(),
                 eventDto.getCategory(),
                 eventDto.getDescription(),
@@ -43,30 +44,6 @@ public class EventService {
         eventRepository.save(event);
     }
 
-//    public void addCommentToEvent(CommentDto commentDto) {
-//        Comment comment = new Comment(commentDto.getContent(), commentDto.getAuthor());
-//        commentRepository.save(comment);
-//    }
-
-//    public Comment addComment(Long event_id, CommentDto commentDto) {
-//        Event event = eventRepository.getOne(event_id);
-//        Comment comment = new Comment(commentDto.getContent(), commentDto.getAuthor(), );
-//        event.addComment(comment);
-//
-//        return commentRepository.save(comment);
-//    }
-
-    public Comment addComment (Long event_id, String content, String author){
-        Event event = eventRepository.getOne(event_id);
-
-        Comment comment = new Comment(
-                content,
-                author,
-                event
-        );
-        event.addComment (comment);
-        return commentRepository.save(comment);
-    }
 
     public void addMember(Long event_id, Long user_id) {
         Event event = eventRepository.getOne(event_id);
