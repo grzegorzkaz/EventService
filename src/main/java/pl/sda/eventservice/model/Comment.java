@@ -21,14 +21,20 @@ public class Comment {
     private String author;
     private LocalDateTime dateAdded = LocalDateTime.now();
 
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+            fetch = FetchType.LAZY)
+    @JoinColumn(name = "event_id")
     private Event event;
 
-    private User user;
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+            fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private Comment comment;
 
-    public Comment(String content, String author) {
+    public Comment(String content, String author, Event event) {
         this.content = content;
         this.author = author;
-
+        this.event = event;
     }
 
     @Override
@@ -38,7 +44,7 @@ public class Comment {
                 ", content='" + content + '\'' +
                 ", author='" + author + '\'' +
                 ", dateAdded=" + dateAdded +
-                ", event=" + event +
+                ", event=" + event.getEventId() +
                 '}';
     }
 }

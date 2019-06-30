@@ -6,7 +6,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -28,6 +30,12 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),        // klucz uzytkownika
             inverseJoinColumns = @JoinColumn(name = "role_id")  // klucz roli
     )private Set<Role> roles = new HashSet<>();
+
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<Event> events = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Comment> comments = new ArrayList<>();
 
     public User(String nickname, String email, String password) {
         this.nickname = nickname;
