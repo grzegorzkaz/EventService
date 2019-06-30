@@ -56,9 +56,9 @@
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/register}">Registration</a>
                 </li>
-<!--                <li class="nav-item">-->
-<!--                    <a class="nav-link" th:href="@{/contact}">Contact</a>-->
-<!--                </li>-->
+                <!--                <li class="nav-item">-->
+                <!--                    <a class="nav-link" th:href="@{/contact}">Contact</a>-->
+                <!--                </li>-->
             </ul>
         </div>
     </div>
@@ -88,7 +88,8 @@
                         <div class="form-group floating-label-form-group controls">
                             <label>Title</label>
                             <input th:field="*{eventName}" type="text" class="form-control" placeholder="Title">
-                            <span th:if="${#fields.hasErrors('eventName')}" th:errors="*{eventName}" class="text-danger">error-message</span>
+                            <span th:if="${#fields.hasErrors('eventName')}" th:errors="*{eventName}"
+                                  class="text-danger">error-message</span>
                         </div>
                     </div>
                     <label>Category</label>
@@ -97,27 +98,43 @@
                                 th:value="${categories.get(c.ordinal())}"
                                 th:text="${c.name()}">`
                         </option>
-                    </select>
-                    <label>Localization</label>
+                    </select> <br>
+                    <label>Location</label>
                     <select th:field="*{location}">
                         <option th:each="l : ${locations}"
                                 th:value="${locations.get(l.ordinal())}"
                                 th:text="${l.name()}">`
                         </option>
-                    </select>
+                    </select> <br>
+                    <label for="startDate">Start date:</label>
+
+                    <input type="date" id="startDate" name="trip-start"
+                           value="2018-07-22"> <br>
+
+                    <label for="endDate">End date:</label>
+
+                    <input type="date" id="endDate" name="trip-start"
+                           value="2018-07-22" >
+
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls">
                             <label>Content</label>
-<!--                            <textarea th:field="*{content}" rows="5" class="form-control" placeholder="Content"-->
-<!--                                      data-validation-required-message="Please enter a content."></textarea>-->
-<!--                            <span th:if="${#fields.hasErrors('content')}" th:errors="*{content}" class="text-danger">error-message</span>-->
+                            <!--                            <textarea th:field="*{content}" rows="5" class="form-control" placeholder="Content"-->
+                            <!--                                      data-validation-required-message="Please enter a content."></textarea>-->
+                            <!--                            <span th:if="${#fields.hasErrors('content')}" th:errors="*{content}" class="text-danger">error-message</span>-->
                         </div>
                     </div>
+
+                    <label for="name">Content :</label>
+
+                    <input type="text" id="name" name="name" required><br>
+                    <input type="hidden" id="userId" value="7">
+
 
                     <br>
                     <div id="success"></div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Add post</button>
+                        <button type="submit" class="btn btn-primary">Add Event</button>
                     </div>
                 </form>
 

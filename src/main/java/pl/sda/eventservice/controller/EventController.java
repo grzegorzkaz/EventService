@@ -54,7 +54,7 @@ public class EventController {
 
 
     @PostMapping("/addEvent")
-    public String addPost(@ModelAttribute("post") @Valid EventDto eventDto,
+    public String addEvent(@ModelAttribute("event") @Valid EventDto eventDto,
                           BindingResult bindingResult,
                           Authentication auth,
                           Model model){
@@ -63,6 +63,8 @@ public class EventController {
 
             model.addAttribute("auth", auth);
             model.addAttribute("categories", Arrays.asList(EventCategoryEnum.values()));
+
+            //eventService.saveEvent(eventDto);
 
             return "addEvent";
         }
