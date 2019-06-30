@@ -6,6 +6,7 @@ import pl.sda.eventservice.model.enums.EventCategoryEnum;
 import pl.sda.eventservice.model.enums.EventLocationEnum;
 
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 
