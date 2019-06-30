@@ -4,16 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import pl.sda.eventservice.controller.dto.EventDto;
-import pl.sda.eventservice.controller.dto.UserDto;
-import pl.sda.eventservice.model.User;
-import pl.sda.eventservice.controller.dto.CommentDto;
-import pl.sda.eventservice.model.Comment;
 import pl.sda.eventservice.model.Event;
 import pl.sda.eventservice.repository.CommentRepository;
 import pl.sda.eventservice.repository.EventRepository;
 import pl.sda.eventservice.repository.UserRepository;
 
-import java.sql.Date;
+import java.util.List;
 
 @Service
 public class EventService {
@@ -28,9 +24,9 @@ public class EventService {
         this.userRepository = userRepository;
     }
 
-    public void saveEvent(EventDto eventDto, Long eventOganiserId) {
+    public void saveEvent(EventDto eventDto, Long eventOrganiserId) {
 
-        Event event = new Event(eventOganiserId,
+        Event event = new Event(eventOrganiserId,
                 eventDto.getEventName(),
                 eventDto.getLocation(),
                 eventDto.getCategory(),
@@ -43,6 +39,10 @@ public class EventService {
         System.out.println(event);
         eventRepository.save(event);
     }
+
+//    public static List<Event> getAllEvents() {
+//        return eventRepository.findAll();
+//    }
 
 
     public void addMember(Long event_id, Long user_id) {
