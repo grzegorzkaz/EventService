@@ -44,6 +44,10 @@ public class EventService {
         eventRepository.save(event);
     }
 
+    public List<Event> getAllEvents() {
+        return eventRepository.findAll();
+    }
+
     public void addMember(Long event_id, Long user_id) {
         Event event = eventRepository.getOne(event_id);
         event.addMember(userRepository.getOne(user_id));

@@ -32,7 +32,8 @@ public class EventController {
     @GetMapping("/")
     public String getAllPosts(Model model, Authentication auth) {
         model.addAttribute("auth", auth);
-
+        List<Event> events = eventService.getAllEvents();
+        model.addAttribute("events", events);
         return "index";
     }
 
