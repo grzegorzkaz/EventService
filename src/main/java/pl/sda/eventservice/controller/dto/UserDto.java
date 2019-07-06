@@ -2,6 +2,7 @@ package pl.sda.eventservice.controller.dto;
 
 import lombok.Data;
 
+import javax.persistence.Column;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;

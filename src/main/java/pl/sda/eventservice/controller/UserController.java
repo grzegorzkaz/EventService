@@ -13,6 +13,7 @@ import javax.validation.Valid;
 
 @Controller
 public class UserController {
+
     UserService userService;
 
     // wstrzyknięcie zależności przez konstruktor
@@ -24,6 +25,7 @@ public class UserController {
     @GetMapping("/register")
     public String register(Model model){
         model.addAttribute("user", new UserDto());
+
         return "registerForm";
     }
 
@@ -31,12 +33,12 @@ public class UserController {
     @PostMapping("/register")
     public String register(@ModelAttribute("user") @Valid UserDto userDto,
                            BindingResult bindingResult){
-
         if(bindingResult.hasErrors()){
+
             return "registerForm";
         }
-
         userService.saveUser(userDto);
+
         return "redirect:/";
     }
 
@@ -44,10 +46,6 @@ public class UserController {
     public String login(Model model){
         return "loginForm";
     }
-
-    //@PostMapping("/login")
-
-
 
     @PutMapping("/addAdmin/{id}")
     public void makeAdmin(@PathVariable Long id) {

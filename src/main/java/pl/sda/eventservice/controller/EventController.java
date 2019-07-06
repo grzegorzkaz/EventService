@@ -31,19 +31,13 @@ public class EventController {
 
     @GetMapping("/")
     public String getAllPosts(Model model, Authentication auth) {
-
         model.addAttribute("auth", auth);
-
-        //List<Event> posts = EventService.getAllEvents();
-        //model.addAttribute("posts", posts);
 
         return "index";
     }
 
-
     @GetMapping("/addEvent")
-    public String addPost(Model model, Authentication auth){
-
+    public String addPost(Model model, Authentication auth) {
         model.addAttribute("auth", auth);
         model.addAttribute("post", new EventDto());
         model.addAttribute("categories", Arrays.asList(EventCategoryEnum.values()));
@@ -52,14 +46,13 @@ public class EventController {
         return "addEvent";
     }
 
-
     @PostMapping("/addEvent")
     public String addEvent(@ModelAttribute("event") @Valid EventDto eventDto,
-                          BindingResult bindingResult,
-                          Authentication auth,
-                          Model model){
+                           BindingResult bindingResult,
+                           Authentication auth,
+                           Model model) {
 
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
 
             model.addAttribute("auth", auth);
             model.addAttribute("categories", Arrays.asList(EventCategoryEnum.values()));
@@ -68,20 +61,13 @@ public class EventController {
 
             return "addEvent";
         }
+        String email = ((UserDetails) auth.getPrincipal()).getUsername();
 
-        String email = ((UserDetails)auth.getPrincipal()).getUsername();
-
-        //eventService.saveEvent(eventDto, email);
         return "redirect:/";
     }
 
-//    @PostMapping("/addEvent")
-//    public void addEvent(@ModelAttribute("event") @Valid EventDto eventDto, Long eventOrganiserId) {
-//        eventService.saveEvent(eventDto, eventOrganiserId);
-//    }
-
     @PostMapping("/addMember/{event_id}")
-    public void addMember(@PathVariable Long event_id, Long user_id){
+    public void addMember(@PathVariable Long event_id, Long user_id) {
         eventService.addMember(event_id, user_id);
     }
 }

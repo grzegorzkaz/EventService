@@ -10,9 +10,9 @@ import pl.sda.eventservice.repository.UserRepository;
 
 @Service
 public class UserService {
+
     UserRepository userRepository;
     RoleRepository roleRepository;
-
 
     @Autowired
     public UserService(UserRepository userRepository, RoleRepository roleRepository) {
@@ -32,8 +32,7 @@ public class UserService {
         userRepository.save(user);
     }
 
-
-    public User loginUser(String login, String password) {
+    public User findUser(String login, String password) {
         return userRepository.findFirstByEmailAndPassword(login, password);
     }
 
@@ -48,5 +47,4 @@ public class UserService {
         user.addRole(roleRepository.getOne(1L));
         userRepository.save(user);
     }
-
 }

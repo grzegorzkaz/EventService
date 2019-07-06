@@ -20,6 +20,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long user_id;
     private String nickname;
+    @Column(unique = true)
     private String email;
     private String password;
     private LocalDateTime registration_date = LocalDateTime.now();
@@ -30,24 +31,16 @@ public class User {
             name = "user_role",                                 // nazwa tabelki
             joinColumns = @JoinColumn(name = "user_id"),        // klucz uzytkownika
             inverseJoinColumns = @JoinColumn(name = "role_id")  // klucz roli
-    )private Set<Role> roles = new HashSet<>();
+    )
+    private Set<Role> roles = new HashSet<>();
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
-    @JsonIgnore
     private List<Comment> comments;
 
     public User(String nickname, String email, String password) {
         this.nickname = nickname;
         this.email = email;
         this.password = password;
-    }
-
-    public void addEvent() {
-
-    }
-
-    public void addComment() {
-
     }
 
     public void addRole(Role role){

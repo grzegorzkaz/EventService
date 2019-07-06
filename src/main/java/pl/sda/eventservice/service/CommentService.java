@@ -43,6 +43,5 @@ public class CommentService {
         event.addComment(comment);
 
         return commentRepository.save(comment);
-
     }
 }
