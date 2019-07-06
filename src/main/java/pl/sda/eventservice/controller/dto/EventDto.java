@@ -1,6 +1,7 @@
 package pl.sda.eventservice.controller.dto;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 import pl.sda.eventservice.model.enums.EventCategoryEnum;
 import pl.sda.eventservice.model.enums.EventLocationEnum;
 
@@ -17,7 +18,9 @@ public class EventDto {
     private EventCategoryEnum category;
     private String description;
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date eventDateStart;
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date eventDateEnd;
 }

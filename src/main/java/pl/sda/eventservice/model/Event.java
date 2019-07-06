@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import pl.sda.eventservice.model.enums.EventCategoryEnum;
 import pl.sda.eventservice.model.enums.EventLocationEnum;
 
@@ -29,8 +30,10 @@ public class Event {
     private EventCategoryEnum category;
     private String description;
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date eventDateStart;
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date eventDateEnd;
 
     public Event(Long eventOrganiserId, String eventName, EventLocationEnum location,

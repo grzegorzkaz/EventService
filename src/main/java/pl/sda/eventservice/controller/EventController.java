@@ -51,18 +51,14 @@ public class EventController {
                            BindingResult bindingResult,
                            Authentication auth,
                            Model model) {
-
+        model.addAttribute("post", new EventDto());
         if (bindingResult.hasErrors()) {
-
             model.addAttribute("auth", auth);
             model.addAttribute("categories", Arrays.asList(EventCategoryEnum.values()));
-
-            //eventService.saveEvent(eventDto);
-
             return "addEvent";
         }
-        String email = ((UserDetails) auth.getPrincipal()).getUsername();
-
+        String email = ((UserDetails)auth.getPrincipal()).getUsername();
+        eventService.saveEvent(eventDto, email);
         return "redirect:/";
     }
 
