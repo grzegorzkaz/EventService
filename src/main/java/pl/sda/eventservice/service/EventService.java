@@ -13,6 +13,7 @@ import java.util.List;
 
 @Service
 public class EventService {
+
     UserRepository userRepository;
     EventRepository eventRepository;
     CommentRepository commentRepository;
@@ -34,22 +35,14 @@ public class EventService {
                 eventDto.getEventDateStart(),
                 eventDto.getEventDateEnd());
 
-
         // zapis do bazy danych
         System.out.println(event);
         eventRepository.save(event);
     }
-
-//    public static List<Event> getAllEvents() {
-//        return eventRepository.findAll();
-//    }
-
 
     public void addMember(Long event_id, Long user_id) {
         Event event = eventRepository.getOne(event_id);
         event.addMember(userRepository.getOne(user_id));
         eventRepository.save(event);
     }
-
-
 }

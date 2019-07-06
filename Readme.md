@@ -6,16 +6,16 @@
 INTRODUCTION
 ------------
 
-* **PURPOSE** — _Event Service_ is first major IT project created by four [_Software Development Academy_](https://sdacademy.dev/) students.  
+* **Purpose** — _Event Service_ is our first major IT project created by five [_Software Development Academy_](https://sdacademy.dev/) students.  
 Purpose of the following project is to create an App that allows you to create, join and search for events in your city.
 
-* **SCOPE** — Our App gathers information about events taking place in your neighbourhood. Roles are devided to admins and users (registered and unregistered).  
+* **Scope** — Our App gathers information about events taking place in your neighbourhood. Roles are divided to admins and users (registered and unregistered).  
 Registered users can create events, invite other users, join existing events or add comments to events.  
 Unregistered users can browse _Home Page_ for the events they are interested in. In order to join a certain event a registration is obligatory.  
 Event creators have an authority to manage their events by editing event info, deleting comments and removing other users from the event.  
-Admins manage the whole App. They can add new events, delete evisting events, delete comments in all existing events or ban users.
+Admins manage the whole App. They can add new events, delete existing events, delete comments in all existing events or ban users.
 
-* **OVERVIEW** — Technologies used in the project:  
+* **Overview** — Technologies used in the project:  
     - Java
     - MariaDB
     - Spring
