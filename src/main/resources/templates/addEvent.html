@@ -31,11 +31,8 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
         <a class="navbar-brand text-warning" th:if="${auth == null}">Not logged in</a>
-        <a class="navbar-brand text-success" th:if="${auth != null}" th:text="${auth.getPrincipal().getUsername()}">Login
-            in</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                aria-label="Toggle navigation">
+        <a class="navbar-brand text-success" th:if="${auth != null}" th:text="${'Hello ' + auth.getPrincipal().getUsername()}">Login in</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
             <i class="fas fa-bars"></i>
         </button>
@@ -51,14 +48,11 @@
                     <a class="nav-link" th:href="@{/}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/addpost}">Add Event</a>
+                    <a class="nav-link" th:if="${auth != null}" th:href="@{/addEvent}">Add Event</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/register}">Registration</a>
                 </li>
-                <!--                <li class="nav-item">-->
-                <!--                    <a class="nav-link" th:href="@{/contact}">Contact</a>-->
-                <!--                </li>-->
             </ul>
         </div>
     </div>
@@ -107,27 +101,29 @@
                         </option>
                     </select> <br>
                     <label for="startDate">Start date:</label>
-
-                    <input type="date" id="startDate" name="trip-start"
+                    <input type="date" id="startDate" name="eventDateStart"
                            value="2018-07-22"> <br>
+                    <span th:if="${#fields.hasErrors('eventName')}" th:errors="*{eventName}"
+                          class="text-danger">error-message</span>
 
                     <label for="endDate">End date:</label>
-
-                    <input type="date" id="endDate" name="trip-start"
-                           value="2018-07-22" >
+                    <input type="date" id="endDate" name="eventDateEnd"
+                           value="2018-07-22">
+                    <span th:if="${#fields.hasErrors('eventName')}" th:errors="*{eventName}"
+                          class="text-danger">error-message</span>
 
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls">
                             <label>Content</label>
-                            <!--                            <textarea th:field="*{content}" rows="5" class="form-control" placeholder="Content"-->
-                            <!--                                      data-validation-required-message="Please enter a content."></textarea>-->
-                            <!--                            <span th:if="${#fields.hasErrors('content')}" th:errors="*{content}" class="text-danger">error-message</span>-->
+                            <textarea th:field="*{description}" rows="5" class="form-control" placeholder="Content"
+                                      data-validation-required-message="Please enter a content."></textarea>
+                            <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="text-danger">error-message</span>
                         </div>
                     </div>
 
-                    <label for="name">Content :</label>
 
-                    <input type="text" id="name" name="name" required><br>
+
+<!--                    <input type="text" id="name" name="description" required><br>-->
                     <input type="hidden" id="userId" value="7">
 
 
