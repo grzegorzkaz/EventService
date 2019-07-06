@@ -74,12 +74,14 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-            <div th:each="post : ${posts}" class="post-preview">
-                <h2 th:text="${post.getTitle()}" class="post-title">
+            <div th:each="event : ${events}" class="post-preview">
+                <h2 th:text="${event.getEventName()}" class="post-title">
                     title
                 </h2>
-                <p th:text="${'Posted by ' + post.getUser().getName() + ' ' + post.getUser().getLastName()}" class="post-meta"> author </p>
-                <p th:text="${'Publication date ' + post.getAdded_date()}" class="post-meta"> date </p>
+                <p th:text="${'Location: ' + event.getLocation()}" class="post-meta"> location </p>
+                <p th:text="${'About the event: ' + event.getDescription()}" class="post-meta"> about </p>
+                <p th:text="${'Start of the event: ' + event.getEventDateStart()}" class="post-meta"> datestart </p>
+                <p th:text="${'End of the event:' + event.getEventDateEnd()}" class="post-meta"> dateend </p>
                 <hr>
             </div>
             <!-- Pager -->
