@@ -1,6 +1,6 @@
 <p align="center">Event Service helps you create, join and search for events in your city!</p>
 
-<p align="center"><img src="/Users/grzechu/IdeaProjects/EventService/src/main/resources/static/img/readme.png" width=700 alt="Screenshot of Example Documentation created with Slate"></p>
+<p align="center"><img src="https://imgur.com/x6DQZ4q" width=700 alt="Screenshot of Example Documentation created with Slate"></p>
 
 
 INTRODUCTION
